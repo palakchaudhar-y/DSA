@@ -15,9 +15,11 @@ class Solution {
             }
         }
         StringBuilder sb=new StringBuilder();
-        while(!st.isEmpty()){
-            sb.insert(0,"/"+st.pop());
-        }
+        for(String part : st) { 
+            sb.append("/"); 
+            sb.append(part);
+         }
+
         if(sb.length()==0){
         return "/";
     }
