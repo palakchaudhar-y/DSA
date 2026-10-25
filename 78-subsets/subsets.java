@@ -1,16 +1,26 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
         int n=nums.length;
-        List<List<Integer>> ans=new ArrayList<>();
-        ans.add(new ArrayList<>());
-        for(int i=0;i<n;i++){
-            int size=ans.size();
-            for(int j=0;j<size;j++){
-                List<Integer> temp=new ArrayList<>(ans.get(j));
-                temp.add(nums[i]);
-                ans.add(temp);
+
+         
+            if(n==0){
+                List<List<Integer>> bres=new ArrayList<>();
+                bres.add(new ArrayList<>());
+                return bres;
             }
+         
+        int a=nums[0];
+        int[] roa=Arrays.copyOfRange(nums,1,n);
+
+        List<List<Integer>> rres=subsets(roa);
+        List<List<Integer>> mres=new ArrayList<>();
+        for (List<Integer> rlist : rres) {
+            mres.add(new ArrayList<>(rlist));
+
+            List<Integer> temp = new ArrayList<>(rlist);
+            temp.add(0, a);
+            mres.add(temp);
         }
-        return ans;
+    return mres;
     }
 }
