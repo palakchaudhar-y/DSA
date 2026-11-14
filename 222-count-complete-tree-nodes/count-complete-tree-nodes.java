@@ -1,4 +1,3 @@
-
 class Solution {
     public int countNodes(TreeNode root) {
         if (root == null) {
@@ -9,7 +8,7 @@ class Solution {
         int right = rightHeight(root);
 
         if (left == right) {
-            return (1 << left) - 1;
+            return (int)Math.pow(2, left) - 1;
         }
 
         return 1 + countNodes(root.left) + countNodes(root.right);
